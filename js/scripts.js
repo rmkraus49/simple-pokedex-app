@@ -64,5 +64,12 @@ var repository = [ ];
 	}
 
 for (var i = 0; i < repository.length; i++) {
-	document.write(repository[i].name)
+	document.write('<div>' + repository[i].name + ' (Height: ' + repository[i].height +'m)')
+	if (repository[i].height > 1.7) {
+		document.write(' - Wow, that\'s big!')
+	}
+	if (repository[i].name === 'Charmander') {
+		document.write(' - You should pick this one!')
+	}
+	document.write('</div>')
 }
