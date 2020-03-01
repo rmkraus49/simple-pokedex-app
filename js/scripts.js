@@ -65,17 +65,15 @@ repository[8] = {
   types: ['Water']
 }
 
-function printPokedexDetails (pokemonList) {
-  for (var i = 0; i < pokemonList.length; i++) {
-    document.write('<div>' + pokemonList[i].name + ' (Height: ' + pokemonList[i].height + 'm)')
-    if (pokemonList[i].height > 1.7) {
-      document.write(' - Wow, that\'s big!')
-    }
-    if (pokemonList[i].name === 'Charmander') {
-      document.write(' - You should pick this one!')
-    }
-    document.write('</div>')
+function printPokemonDetails (pokemon) {
+  document.write('<div>' + pokemon.name + ' (Height: ' + pokemon.height + 'm)')
+  if (pokemon.height > 1.7) {
+    document.write(' - Wow, that\'s big!')
   }
+  if (pokemon.name === 'Charmander') {
+    document.write(' - You should pick this one!')
+  }
+  document.write('</div>')
 }
 
-printPokedexDetails(repository)
+repository.forEach(printPokemonDetails)
