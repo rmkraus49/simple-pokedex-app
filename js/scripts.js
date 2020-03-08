@@ -1,3 +1,4 @@
+var $pokemonList = document.querySelector('.pokemon-list');
 var pokemonRepository = (function () {
   var repository = [];
 
@@ -22,9 +23,22 @@ var pokemonRepository = (function () {
     },
     getAll: function() {
       return repository;
+    },
+    addListItem: function(pokemon) {
+      var listItem = document.createElement('li');
+      var button = document.createElement('button');
+      button.innerText = pokemon.name;
+      button.classList.add('pokemon-button');
+      listItem.appendChild(button);
+      $pokemonList.appendChild(listItem);
     }
   };
 })();
+
+var $mainTitle = document.querySelector('h1');
+$mainTitle.innerText = 'Kanto Pokedex';
+console.log($mainTitle.tagName);
+
 
 // repository:
 
@@ -91,15 +105,4 @@ pokemonRepository.add({
   types: ['Water']
 })
 
-function printPokemonDetails (pokemon) {
-  document.write('<div>' + pokemon.name + ' (Height: ' + pokemon.height + 'm)')
-  if (pokemon.height > 1.7) {
-    document.write(' - Wow, that\'s big!')
-  }
-  if (pokemon.name === 'Charmander') {
-    document.write(' - You should pick this one!')
-  }
-  document.write('</div>')
-}
-
-pokemonRepository.getAll().forEach(printPokemonDetails)
+pokemonRepository.getAll().forEach(pokemonRepository.addListItem)
