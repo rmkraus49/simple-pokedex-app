@@ -13,3 +13,9 @@ div {
   padding: 5px;
   margin: 5px;
 }
+
+.pokemon-button {
+  font-size: 18px;
+  padding: 5px;
+  margin: 10px;
+}
