@@ -31,7 +31,9 @@ div {
 }
 
 h1 {
-  color: var(--light-grey);
+  color: var(--dark-grey);
+  font-size: 26px;
+  font-weight: var(--bold);
 }
 
 button,
@@ -39,14 +41,12 @@ button,
   border: none;
   display: inline-block;
   font-family: inherit;
-  background-color: var(--primary-color);
-  color: var(--white);
+  background-color: var(--light-grey);
+  color: var(--dark-grey);
   text-decoration: none;
-  padding: 10px;
+  padding: 12px 20px;
   border-radius: 3px;
-
-  /* gives button a botom border with width 2px, type solid, and color in RGBA format; RGBA to allow Alpha channel to regulate transparency; 1 is totally opaque, 0 is totally transparent */
-  border-bottom: 2px solid var(--button-border-bottom-color);
+  text-align: left;
   transition: 0.2s opacity;
 }
 
@@ -59,8 +59,12 @@ button:focus,
   opacity: 0.8;
 }
 
+ul {
+  margin: 0;
+}
+
 li {
-  margin: 10px;
+  margin: 12px;
 }
 
 .pokemon-list {
@@ -74,7 +78,6 @@ li {
 }
 
 .page-header {
-  background-color: var(--primary-color);
   display: flex;
   width: 100%;
   padding: 10px 30px;
@@ -82,6 +85,6 @@ li {
 }
 
 .pokemon-list-section {
-  margin: auto;
+  margin: 0 30px;
   max-width: 300px;
 }
