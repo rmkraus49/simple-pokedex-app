@@ -4,6 +4,7 @@ var pokemonRepository = (function () {
   var repository = [];
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
+// fetches pokemon data from API
   function loadList() {
     return fetch(apiUrl).then(function (response) {
       return response.json();
@@ -33,10 +34,7 @@ var pokemonRepository = (function () {
     }
   };
 
-  function getAll() {
-    return repository;
-  };
-
+//adds pokemon button to page
   function addListItem(pokemon) {
     var listItem = document.createElement('li');
     var button = document.createElement('button');
@@ -48,12 +46,8 @@ var pokemonRepository = (function () {
       pokemonRepository.showDetails(pokemon);
     })
   };
-  function showDetails(item) {
-    pokemonRepository.loadDetails(item).then(function () {
-      console.log(item);
-    });
-  };
 
+//fetches pokemon details from API
   function loadDetails(item) {
     var url = item.detailsUrl;
     return fetch(url).then(function (response) {
@@ -66,6 +60,18 @@ var pokemonRepository = (function () {
       console.error(e);
     });
   }
+
+//prints fetched pokemon details to console
+  function showDetails(item) {
+    pokemonRepository.loadDetails(item).then(function () {
+      console.log(item);
+    });
+  };
+
+//returns repository
+  function getAll() {
+    return repository;
+  };
 
   return {
     add: add,
