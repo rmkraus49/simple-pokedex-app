@@ -1,4 +1,5 @@
 var $pokemonList = document.querySelector('.pokemon-list');
+
 var pokemonRepository = (function () {
   var repository = [];
 
