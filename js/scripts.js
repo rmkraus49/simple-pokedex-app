@@ -32,14 +32,19 @@ var pokemonRepository = (function () {
       button.classList.add('pokemon-button');
       listItem.appendChild(button);
       $pokemonList.appendChild(listItem);
+      button.addEventListener('click', function(event) {
+        pokemonRepository.showDetails(pokemon);
+      })
+    },
+    showDetails: function(pokemon) {
+      console.log(pokemon.name);
     }
   };
 })();
 
-var $mainTitle = document.querySelector('h1');
-$mainTitle.innerText = 'Kanto Pokedex';
-console.log($mainTitle.tagName);
 
+var $mainTitle = document.querySelector('h1');
+$mainTitle.innerText = 'Pokedex';
 
 // repository:
 
@@ -106,4 +111,5 @@ pokemonRepository.add({
   types: ['Water']
 })
 
-pokemonRepository.getAll().forEach(pokemonRepository.addListItem)
+// forEach loop to display list of pokemon:
+pokemonRepository.getAll().forEach(pokemonRepository.addListItem);
