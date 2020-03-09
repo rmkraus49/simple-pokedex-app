@@ -42,7 +42,6 @@ var pokemonRepository = (function () {
   };
 })();
 
-
 var $mainTitle = document.querySelector('h1');
 $mainTitle.innerText = 'Pokedex';
 
