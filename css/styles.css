@@ -88,3 +88,11 @@ li {
   margin: 0 30px;
   max-width: 300px;
 }
+
+#modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
+  display: block;
+}
