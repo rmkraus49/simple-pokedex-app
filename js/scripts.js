@@ -61,12 +61,64 @@ var pokemonRepository = (function () {
     });
   }
 
-//prints fetched pokemon details to console
+//displays fetched pokemon details in modal
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function () {
       console.log(item);
+
+    var $modalContainer = document.querySelector('#modal-container');
+    $modalContainer.innerHTML = '';
+
+    var modal = document.createElement('div');
+    modal.classList.add('modal');
+
+// create close button that triggers hideDetails function on click
+    var closeButtonElement = document.createElement('button');
+    closeButtonElement.classList.add('modal-close');
+    closeButtonElement.innerText = 'Close';
+    closeButtonElement.addEventListener('click', hideDetails);
+
+// generates title as pokemon name
+    var titleElement = document.createElement('h1');
+    titleElement.innerText = item.name;
+
+// generates modal content to hold pokemon details
+    var contentElement = document.createElement('p');
+    contentElement.innerText = 'placeholder - details go here';
+
+// appends modal content to DOM
+    modal.appendChild(titleElement);
+    modal.appendChild(contentElement);
+    modal.appendChild(closeButtonElement);
+    $modalContainer.appendChild(modal);
+
+//makes modal visible
+    $modalContainer.classList.add('is-visible');
+
+// adds event listener to close on clicking outside the modal
+    $modalContainer.addEventListener('click', (e) => {
+      var target = e.target;
+      if (target === $modalContainer) {
+        hideDetails();
+      }
     });
+
+    // defines hideDetails function
+    function hideDetails() {
+      $modalContainer.classList.remove('is-visible');
+    }
+
+    // adds event listener to close modal on esc key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && $modalContainer.classList.contains('is-visible')) {
+        hideDetails();
+      }
+    });
+
+// ending punctuation for showDetails
+  });
   };
+// end of showDetails function
 
 //returns repository
   function getAll() {
