@@ -79,16 +79,22 @@ var pokemonRepository = (function () {
     closeButtonElement.addEventListener('click', hideDetails);
 
 // generates title as pokemon name
-    var titleElement = document.createElement('h1');
-    titleElement.innerText = item.name;
+    var pokemonNameElement = document.createElement('h1');
+    pokemonNameElement.innerText = item.name;
 
-// generates modal content to hold pokemon details
-    var contentElement = document.createElement('p');
-    contentElement.innerText = 'placeholder - details go here';
+// generates modal element to show pokemon picture
+    var pokemonImageElement = document.createElement('img');
+    pokemonImageElement.src = item.imageUrl;
+    pokemonImageElement.alt = item.name;
+
+// generates modal element to show height
+    var pokemonHeightElement = document.createElement('p');
+    pokemonHeightElement.innerText = 'Height: ' + item.height;
 
 // appends modal content to DOM
-    modal.appendChild(titleElement);
-    modal.appendChild(contentElement);
+    modal.appendChild(pokemonNameElement);
+    modal.appendChild(pokemonImageElement);
+    modal.appendChild(pokemonHeightElement);
     modal.appendChild(closeButtonElement);
     $modalContainer.appendChild(modal);
 
