@@ -19,20 +19,13 @@ var pokemonRepository = (function () {
     }).catch(function (e) {
       console.error(e);
     })
-  };
+  }
 
 //adds pokemon from API to repository after data type validation
   function add(pokemon) {
-    if(
-        (typeof pokemon) === 'object' &
-        (typeof pokemon.name) === 'string' &
-        (typeof pokemon.detailsUrl) === 'string'
-      ) {
-      repository.push(pokemon);
-    } else {
-      console.log('pokedex entry for ' + pokemon.name + ' failed data type validation');
-    }
-  };
+    repository.push(pokemon);
+  }
+
 
 //adds pokemon button to page
   function addListItem(pokemon) {
@@ -42,10 +35,10 @@ var pokemonRepository = (function () {
     button.classList.add('pokemon-button');
     listItem.appendChild(button);
     $pokemonList.appendChild(listItem);
-    button.addEventListener('click', function(event) {
+    button.addEventListener('click', function() {
       pokemonRepository.showDetails(pokemon);
     })
-  };
+  }
 
 //fetches pokemon details from API
   function loadDetails(item) {
@@ -64,8 +57,6 @@ var pokemonRepository = (function () {
 //displays fetched pokemon details in modal
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function () {
-      console.log(item);
-
     var $modalContainer = document.querySelector('#modal-container');
     $modalContainer.innerHTML = '';
 
@@ -123,13 +114,13 @@ var pokemonRepository = (function () {
 
 // ending punctuation for showDetails
   });
-  };
+  }
 // end of showDetails function
 
 //returns repository
   function getAll() {
     return repository;
-  };
+  }
 
   return {
     add: add,
